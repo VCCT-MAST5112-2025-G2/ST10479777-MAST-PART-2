@@ -8,7 +8,7 @@ type MenuItem = {
   price: number;
 };
 
-export default function ChefInputScreen() {
+export default function ChefInputScreen(): React.ReactElement {
   const router = useRouter();
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [dishName, setDishName] = useState<string>('');

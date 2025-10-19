@@ -7,34 +7,31 @@ export default function HomeScreen(): React.ReactElement {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../assets/food.jpg')}
-        style={styles.image}
-        resizeMode="cover"
-      />
+      
+  
       <Text style={styles.title}>Welcome to Our Restaurant 🍽</Text>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./starters')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/starters' as any)}>
         <Text style={styles.buttonText}>Starters</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./main')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/mains' as any)}>
         <Text style={styles.buttonText}>Main Course</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./dessert')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/desserts' as any)}>
         <Text style={styles.buttonText}>Dessert</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./chefInput')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/chefsInput' as any)}>
         <Text style={styles.buttonText}>Chef's Input</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./filter')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/filter' as any)}>
         <Text style={styles.buttonText}>Filter Menu</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('./manage')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/manage' as any)}>
         <Text style={styles.buttonText}>Manage Menu</Text>
       </TouchableOpacity>
     </View>

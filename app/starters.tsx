@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 
 type Starter = {
@@ -15,8 +15,19 @@ const startersData: Starter[] = [
   { id: '3', name: 'Spring Rolls', description: 'Crispy rolls with a sweet chili dip.', price: 50 },
 ];
 
-export default function StartersScreen() {
+export default function StartersScreen(): React.ReactElement {
   const router = useRouter();
+
+  const handleOrder = (itemName: string) => {
+    Alert.alert('Order Placed 🧾', `You ordered: ${itemName}`);
+  };
+
+  const handleBack = () => {
+    // If you want to return to the home page:
+    router.push('/');
+    // If this screen is not the first one, you could use:
+    // router.back();
+  };
 
   return (
     <View style={styles.container}>
@@ -30,7 +41,10 @@ export default function StartersScreen() {
             <Text style={styles.dishName}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.price}>R {item.price}</Text>
-            <TouchableOpacity style={styles.orderButton}>
+            <TouchableOpacity
+              style={styles.orderButton}
+              onPress={() => handleOrder(item.name)}
+            >
               <Text style={styles.orderText}>Order</Text>
             </TouchableOpacity>
           </View>
@@ -39,7 +53,7 @@ export default function StartersScreen() {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => router.back()}
+        onPress={handleBack}
       >
         <Text style={styles.backText}>⬅ Back</Text>
       </TouchableOpacity>
@@ -102,5 +116,6 @@ const styles = StyleSheet.create({
   backText: {
     color: '#fff',
     textAlign: 'center',
+    fontWeight: '600',
   },
 });
