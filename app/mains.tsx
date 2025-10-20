@@ -1,8 +1,10 @@
+// app/starters.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
 
-type mains = {
+type Mains = {
   id: string;
   name: string;
   description: string;
@@ -10,44 +12,52 @@ type mains = {
   image: string;
 };
 
-const mainsData: mains[] = [
+const startersData: Mains[] = [
   {
     id: '1',
     name: 'Grilled Chicken',
-    description: 'Served with chips and salad.',
-    price: 40,
+    description: 'Juicy grilled chicken with herbs.',
+    price: 70,
     image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
   },
   {
     id: '2',
     name: 'Beef Steak',
-    description: 'Juicy grilled beef steak with mushroom sauce.',
-    price: 55,
+    description: 'Juicy grilled beef served with sides.',
+    price: 140,
     image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
   },
   {
     id: '3',
-    name: 'Pasta Alfredo',
-    description: 'Creamy Alfredo pasta with herbs.',
+    name: 'Alfredo Pasta',
+    description: 'Creamy pasta with with herbs',
     price: 50,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
- {
-    id: '4',
+  {
+    id: '3',
     name: 'Lamb Chops',
-    description: 'Tender chops with mint gravy.',
+    description: 'Tender lamb chops with mint sauce.',
     price: 50,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
-
 
 ];
 
-export default function StartersScreen(): React.ReactElement {
+export default function MainsScreen(): React.ReactElement {
   const router = useRouter();
+  const { addToOrder } = useMenu(); // ✅ Use addToOrder from context
 
-  const handleAdd = (itemName: string) => {
-    Alert.alert('✅ Added to Order', `${itemName} has been added.`);
+  const handleAdd = (mains: Mains) => {
+    addToOrder({
+      id: mains.id,
+      name: mains.name,
+      description: mains.description,
+      price: mains.price,
+      category: 'main', // 👈 Important for order grouping
+    });
+
+    Alert.alert('✅ Added to Order', `${mains.name} has been added.`);
   };
 
   return (
@@ -55,7 +65,7 @@ export default function StartersScreen(): React.ReactElement {
       <Text style={styles.title}>Mains</Text>
 
       <FlatList
-        data={mainsData}
+        data={startersData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.card}>
@@ -63,16 +73,19 @@ export default function StartersScreen(): React.ReactElement {
             <Text style={styles.dishName}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.price}>R {item.price}</Text>
+
             <TouchableOpacity
               style={styles.addButton}
-              onPress={() => handleAdd(item.name)}
+              onPress={() => handleAdd(item)}
             >
               <Text style={styles.addText}>Add</Text>
             </TouchableOpacity>
           </View>
         )}
+        contentContainerStyle={styles.listContent}
       />
 
+      {/* Navigation Buttons */}
       <View style={styles.bottomNav}>
         <TouchableOpacity
           style={styles.navButton}
@@ -83,7 +96,7 @@ export default function StartersScreen(): React.ReactElement {
 
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => router.push('/desserts')} // 👉 next page
+          onPress={() => router.push('/desserts')}
         >
           <Text style={styles.navText}>Next ➡</Text>
         </TouchableOpacity>
@@ -92,19 +105,23 @@ export default function StartersScreen(): React.ReactElement {
   );
 }
 
+// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fefcf3',
+    backgroundColor: '#fff7e6',
     paddingHorizontal: 20,
     paddingTop: 30,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 20,
     color: '#5a3825',
+  },
+  listContent: {
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: '#ffffff',

@@ -1,6 +1,8 @@
+// app/mains.tsx
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
+import { View,Text, StyleSheet, TouchableOpacity, FlatList, Image,Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
 
 type desserts = {
   id: string;
@@ -14,45 +16,53 @@ const dessertsData: desserts[] = [
   {
     id: '1',
     name: 'Chocolate Brownie',
-    description: 'Warm and goey with vanilla ice cream.',
+    description: 'Rich chocolate brownie with ice cream.',
     price: 65,
     image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
   },
   {
     id: '2',
     name: 'Cheesecake',
-    description: 'Classic creamy cheesecake with berry topping.',
+    description: 'Classic cheesecake with a berry topping.',
     price: 70,
     image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
   },
   {
     id: '3',
-    name: 'Ice cream Sundae',
-    description: 'Three scoops with chocolate sauce.',
+    name: 'Ice Cream Sundae',
+    description: 'Vanilla ice cream with chocolate sauce.',
     price: 55,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
- {
+  {
     id: '4',
     name: 'Malva Pudding',
     description: 'Traditional South African dessert with custard.',
-    price: 50,
+    price: 130,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
-
-
 ];
 
-export default function StartersScreen(): React.ReactElement {
+export default function DessertsScreen(): React.ReactElement {
   const router = useRouter();
+  const { addToOrder} = useMenu(); // ✅ Access addItem from context
 
-  const handleAdd = (itemName: string) => {
-    Alert.alert('✅ Added to Order', `${itemName} has been added.`);
+  const handleAdd = (desserts: desserts) => {
+    // Add to global menu order
+    addToOrder({
+      id: desserts.id,
+      name: desserts.name,
+      description: desserts.description,
+      price: desserts.price,
+      category: 'dessert', // 👈 Important for filtering later
+    });
+
+    Alert.alert('✅ Added to Order', `${desserts.name} has been added.`);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mains</Text>
+      <Text style={styles.title}>Desserts</Text>
 
       <FlatList
         data={dessertsData}
@@ -63,16 +73,19 @@ export default function StartersScreen(): React.ReactElement {
             <Text style={styles.dishName}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.price}>R {item.price}</Text>
+
             <TouchableOpacity
               style={styles.addButton}
-              onPress={() => handleAdd(item.name)}
+              onPress={() => handleAdd(item)}
             >
               <Text style={styles.addText}>Add</Text>
             </TouchableOpacity>
           </View>
         )}
+        contentContainerStyle={styles.listContent}
       />
 
+      {/* Navigation Buttons */}
       <View style={styles.bottomNav}>
         <TouchableOpacity
           style={styles.navButton}
@@ -83,7 +96,7 @@ export default function StartersScreen(): React.ReactElement {
 
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => router.push('/chefsinput')} // 👉 next page
+          onPress={() => router.push('/filter')}
         >
           <Text style={styles.navText}>Next ➡</Text>
         </TouchableOpacity>
@@ -92,19 +105,23 @@ export default function StartersScreen(): React.ReactElement {
   );
 }
 
+// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fefcf3',
+    backgroundColor: '#fff7e6',
     paddingHorizontal: 20,
     paddingTop: 30,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 20,
     color: '#5a3825',
+  },
+  listContent: {
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: '#ffffff',

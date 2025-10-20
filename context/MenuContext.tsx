@@ -11,17 +11,27 @@ export type MenuItem = {
 
 type MenuContextType = {
   menu: MenuItem[];
+  order: MenuItem[];
   addItem: (item: MenuItem) => void;
   removeItem: (id: string) => void;
   updateItem: (updated: MenuItem) => void;
   clearMenu: () => void;
+  addToOrder: (item: MenuItem) => void;
+  removeFromOrder: (id: string) => void;
+  clearOrder: () => void;
 };
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
-export const MenuProvider = ({ children }: { children: ReactNode }) => {
-  const [menu, setMenu] = useState<MenuItem[]>([]);
+interface MenuProviderProps {
+  children: ReactNode;
+}
 
+export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
+  const [menu, setMenu] = useState<MenuItem[]>([]);
+  const [order, setOrder] = useState<MenuItem[]>([]);
+
+  // MENU HANDLERS
   const addItem = (item: MenuItem) => {
     setMenu((prev) => [...prev, item]);
   };
@@ -31,22 +41,49 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateItem = (updated: MenuItem) => {
-    setMenu((prev) => prev.map(i => (i.id === updated.id ? updated : i)));
+    setMenu((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
   };
 
   const clearMenu = () => {
     setMenu([]);
   };
 
+  // ORDER HANDLERS
+  const addToOrder = (item: MenuItem) => {
+    setOrder((prev) => [...prev, item]);
+  };
+
+  const removeFromOrder = (id: string) => {
+    setOrder((prev) => prev.filter((i) => i.id !== id));
+  };
+
+  const clearOrder = () => {
+    setOrder([]);
+  };
+
   return (
-    <MenuContext.Provider value={{ menu, addItem, removeItem, updateItem, clearMenu }}>
+    <MenuContext.Provider
+      value={{
+        menu,
+        order,
+        addItem,
+        removeItem,
+        updateItem,
+        clearMenu,
+        addToOrder,
+        removeFromOrder,
+        clearOrder,
+      }}
+    >
       {children}
     </MenuContext.Provider>
   );
 };
 
-export const useMenu = () => {
+export const useMenu = (): MenuContextType => {
   const ctx = useContext(MenuContext);
-  if (!ctx) throw new Error('useMenu must be used within a MenuProvider');
+  if (!ctx) {
+    throw new Error('useMenu must be used within a MenuProvider');
+  }
   return ctx;
 };

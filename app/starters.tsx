@@ -1,6 +1,8 @@
+// app/starters.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
 
 type Starter = {
   id: string;
@@ -36,9 +38,18 @@ const startersData: Starter[] = [
 
 export default function StartersScreen(): React.ReactElement {
   const router = useRouter();
+  const { addToOrder } = useMenu(); // ✅ Use addToOrder from context
 
-  const handleAdd = (itemName: string) => {
-    Alert.alert('✅ Added to Order', `${itemName} has been added.`);
+  const handleAdd = (starter: Starter) => {
+    addToOrder({
+      id: starter.id,
+      name: starter.name,
+      description: starter.description,
+      price: starter.price,
+      category: 'starter', // 👈 Important for order grouping
+    });
+
+    Alert.alert('✅ Added to Order', `${starter.name} has been added.`);
   };
 
   return (
@@ -54,16 +65,19 @@ export default function StartersScreen(): React.ReactElement {
             <Text style={styles.dishName}>{item.name}</Text>
             <Text style={styles.description}>{item.description}</Text>
             <Text style={styles.price}>R {item.price}</Text>
+
             <TouchableOpacity
               style={styles.addButton}
-              onPress={() => handleAdd(item.name)}
+              onPress={() => handleAdd(item)}
             >
               <Text style={styles.addText}>Add</Text>
             </TouchableOpacity>
           </View>
         )}
+        contentContainerStyle={styles.listContent}
       />
 
+      {/* Navigation Buttons */}
       <View style={styles.bottomNav}>
         <TouchableOpacity
           style={styles.navButton}
@@ -74,7 +88,7 @@ export default function StartersScreen(): React.ReactElement {
 
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => router.push('/mains')} // 👉 next page
+          onPress={() => router.push('/mains')}
         >
           <Text style={styles.navText}>Next ➡</Text>
         </TouchableOpacity>
@@ -83,19 +97,23 @@ export default function StartersScreen(): React.ReactElement {
   );
 }
 
+// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fefcf3',
+    backgroundColor: '#fff7e6',
     paddingHorizontal: 20,
     paddingTop: 30,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: 20,
     color: '#5a3825',
+  },
+  listContent: {
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: '#ffffff',

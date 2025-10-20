@@ -6,12 +6,12 @@ type MenuItem = {
   id: string;
   name: string;
   price: number;
-  category: string;
+  category: 'starter' | 'main' | 'dessert';
 };
 
 export default function FilterMenuScreen() {
   const router = useRouter();
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState<string>('');
 
   // You can later replace this with actual data (e.g., from ChefInput page or a file)
   const [menu] = useState<MenuItem[]>([

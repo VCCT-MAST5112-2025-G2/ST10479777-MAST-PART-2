@@ -1,84 +1,65 @@
+// app/index.tsx  (Homepage)
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useMenu } from '../context/MenuContext';
 
-export default function HomeScreen() {
+export default function HomeScreen(): React.ReactElement {
   const router = useRouter();
+  const { menu } = useMenu();
 
   return (
     <View style={styles.container}>
-      {/* Top Image */}
-      <Image
-        source={{ uri: 'https://via.placeholder.com/300x200' }} // You can replace with your own image
-        style={styles.image}
+      <Text style={styles.title}>Restaurant Menu 🍽</Text>
+      <Text style={styles.countText}>Total Items Available: {menu.length}</Text>
+
+      <FlatList
+        data={menu}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Text style={styles.itemText}>
+              {item.name} - R {item.price} ({item.category})
+            </Text>
+          </View>
+        )}
+        ListEmptyComponent={<Text style={styles.emptyText}>Chef has not added any items yet.</Text>}
       />
 
-      {/* Description Section */}
-      <Text style={styles.description}>
-        Welcome to our restaurant app. Explore our Starters, Mains, Desserts and more!
-      </Text>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/chefsinput')}>
+        <Text style={styles.navText}>👨‍🍳 Go to Chef Input</Text>
+      </TouchableOpacity>
 
-      {/* Scrollable Menu Buttons */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.buttonRow}>
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/starters')}>
-          <Text style={styles.menuButtonText}>Starters</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/starters')}>
+        <Text style={styles.navText}>🥗 View Starters</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/mains')}>
-          <Text style={styles.menuButtonText}>Mains</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/mains')}>
+        <Text style={styles.navText}>🍝 View Mains</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/desserts')}>
-          <Text style={styles.menuButtonText}>Desserts</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/desserts')}>
+        <Text style={styles.navText}>🍰 View Desserts</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/chefsinput')}>
-          <Text style={styles.menuButtonText}>Chef's Input</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/filter')}>
+        <Text style={styles.navText}>🔍 Filter Menu</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/filter')}>
-          <Text style={styles.menuButtonText}>Filter</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.menuButton} onPress={() => router.push('/summary')}>
-          <Text style={styles.menuButtonText}>Summary</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      <TouchableOpacity style={styles.navButton} onPress={() => router.push('/summary')}>
+        <Text style={styles.navText}>📝 View Summary</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff7e6',
-    padding: 20,
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 12,
-    marginBottom: 20,
-  },
-  description: {
-    fontSize: 16,
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  menuButton: {
-    backgroundColor: '#ff8c00',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  menuButtonText: {
-    color: '#fff',
-    fontWeight: '600',
-  },
+  container: { flex: 1, padding: 20, backgroundColor: '#fff7e6' },
+  title: { fontSize: 24, fontWeight: '700', textAlign: 'center', marginBottom: 20, color: '#5a3825' },
+  countText: { fontSize: 16, textAlign: 'center', marginBottom: 15, color: '#333' },
+  card: { backgroundColor: '#fff', padding: 12, marginBottom: 10, borderRadius: 8 },
+  itemText: { fontSize: 16, color: '#333' },
+  emptyText: { textAlign: 'center', color: '#999', marginTop: 20 },
+  navButton: { marginTop: 10, backgroundColor: '#5a3825', paddingVertical: 12, borderRadius: 8 },
+  navText: { color: '#fff', textAlign: 'center', fontWeight: '600' },
 });
