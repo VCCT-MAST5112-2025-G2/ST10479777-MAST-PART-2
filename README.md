@@ -1,7 +1,7 @@
 # ST10479777
 # MAST5112
 # PURPOSE
-The application is to provide a seamless digital platforrm for Christoffel a private chef to manage is menu updates. The application displays the chefs special in three respective courses (starters, mains and desserts). Users can add what they want and later Christoffel can edit and remove items on the homepage. 
+The application is to provide a seamless digital platforrm for Christoffel a private chef to manage his menu updates. The application displays the chefs special in three respective courses (starters, mains and desserts). Users can add what they want and later Christoffel can edit and remove items on the chefs input and have them displayed in the on the homepage. 
 # homepage features
 1. The homepage has a text area that displays what has been added by the users and Christoffel. It also calculates the total amount of the dishes and counts the number of dishes added.
 2. There are 4 buttons at the bottom, starters, main, desserts and chefs input.
