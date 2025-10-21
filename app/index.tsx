@@ -7,23 +7,23 @@ export default function HomePage(): React.ReactElement {
   const router = useRouter();
   const { menu } = useMenu();
 
-  // 🧮 Total calculations
+  // Total calculations
   const totalItems = menu.length;
   const totalPrice = menu.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>👨‍🍳 Christoffel’s kitchen where flavor meets finesse.</Text>
+      <Text style={styles.title}>👨‍🍳 Christoffel’s kitchen where flavour meets finesse.</Text>
 
       
 
-      {/* 📊 Total Summary */}
+      {/* Total Summary */}
       <View style={styles.summary}>
         <Text style={styles.summaryText}>Total Items: {totalItems}</Text>
         <Text style={styles.summaryText}>Total Price: R {totalPrice}</Text>
       </View>
 
-      {/* 🧾 Display Menu Items */}
+      {/*  Display Menu Items */}
       <FlatList
         data={menu}
         keyExtractor={(item) => item.id}
@@ -42,7 +42,7 @@ export default function HomePage(): React.ReactElement {
         contentContainerStyle={styles.listContent}
       />
 
-      {/* 📍 Navigation Buttons */}
+      {/*  Navigation Buttons */}
       <View style={styles.navContainer}>
         <TouchableOpacity style={styles.navButton} onPress={() => router.push('/starters')}>
           <Text style={styles.navText}>Starters</Text>
@@ -61,7 +61,7 @@ export default function HomePage(): React.ReactElement {
   );
 }
 
-// 🎨 Styling
+// Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

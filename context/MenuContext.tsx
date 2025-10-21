@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// 📝 Define menu item structure
+// Define menu item structure
 export type MenuItem = {
   id: string;
   name: string;
@@ -26,22 +26,22 @@ interface MenuProviderProps {
 export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [menu, setMenu] = useState<MenuItem[]>([]);
 
-  // ➕ Add new menu item
+  //  Add new menu item
   const addItem = (item: MenuItem) => {
     setMenu((prev) => [...prev, item]);
   };
 
-  // 🗑 Remove menu item
+  // Remove menu item
   const removeItem = (id: string) => {
     setMenu((prev) => prev.filter((i) => i.id !== id));
   };
 
-  // ✍ Update existing item
+  //  Update existing item
   const updateItem = (updated: MenuItem) => {
     setMenu((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
   };
 
-  // 🧹 Clear menu completely
+  //  Clear menu completely
   const clearMenu = () => {
     setMenu([]);
   };
@@ -61,7 +61,7 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   );
 };
 
-// ✅ Safe hook to use the context
+//  Safe hook to use the context
 export const useMenu = (): MenuContextType => {
   const ctx = useContext(MenuContext);
   if (!ctx) {

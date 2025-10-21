@@ -10,13 +10,13 @@ export default function ChefsInputScreen(): React.ReactElement {
   const router = useRouter();
   const { menu, addItem, removeItem, updateItem } = useMenu();
 
-  // 🆕 States for adding new items
+  // States for adding new items
   const [newName, setNewName] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newCategory, setNewCategory] = useState<Category>('starter');
 
-  // ✍ States for editing existing items
+  // States for editing existing items
   const [editId, setEditId] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');

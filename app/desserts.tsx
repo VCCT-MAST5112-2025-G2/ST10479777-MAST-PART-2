@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMenu } from '../context/MenuContext'; // ✅ Import menu context
+import { useMenu } from '../context/MenuContext'; // Import menu context
 
 type Desserts = {
   id: string;
@@ -45,7 +45,7 @@ const dessertsData: Desserts[] = [
 
 export default function DessertsScreen(): React.ReactElement {
   const router = useRouter();
-  const { addItem } = useMenu(); // ✅ Correct function name from context
+  const { addItem } = useMenu(); // 
 
   const handleAdd = (desserts: Desserts) => {
     // Add the item to the global context
@@ -57,7 +57,7 @@ export default function DessertsScreen(): React.ReactElement {
       category: 'dessert',
     });
 
-    Alert.alert('✅ Added to Order', `${desserts.name} has been added to your order.`);
+    Alert.alert(' Added to Order', `${desserts.name} has been added to your order.`);
   };
 
   return (

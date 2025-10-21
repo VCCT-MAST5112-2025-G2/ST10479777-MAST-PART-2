@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMenu } from '../context/MenuContext'; // ✅ Import menu context
+import { useMenu } from '../context/MenuContext'; // Import menu context
 
 type Mains = {
   id: string;
@@ -45,7 +45,7 @@ const mainsData: Mains[] = [
 
 export default function MainsScreen(): React.ReactElement {
   const router = useRouter();
-  const { addItem } = useMenu(); // ✅ Correct function name from context
+  const { addItem } = useMenu(); //  Correct function name from context
 
   const handleAdd = (mains: Mains) => {
     // Add the item to the global context
