@@ -23,6 +23,18 @@ The application is to provide a seamless digital platforrm for Christoffel a pri
 # Homepage screenshot
 ![WhatsApp Image 2025-10-21 at 13 51 55_269a9555](https://github.com/user-attachments/assets/db3bb3ab-9810-4d4a-a2ad-e4dd2b75ba21)
 # Starters Screenshot
+![WhatsApp Image 2025-10-21 at 13 51 57_c4223a12](https://github.com/user-attachments/assets/7eb6f19e-7d9f-4c50-9082-77b07ef0ec4e)
+# Mains screenshot
+![WhatsApp Image 2025-10-21 at 13 52 00_a39533fc](https://github.com/user-attachments/assets/18786e7a-0af1-4c47-b04c-9bb2900f2374)
+# Desserts Screenshots
+![WhatsApp Image 2025-10-21 at 13 52 04_2c6e26b6](https://github.com/user-attachments/assets/593e65d6-c07c-494d-b49c-30071963e6a1)
+# Chef's input Screenshots
+# Installation instructions
+
+
+
+
+
 
 
    
