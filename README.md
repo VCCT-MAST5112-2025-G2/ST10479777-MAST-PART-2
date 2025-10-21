@@ -29,7 +29,8 @@ The application is to provide a seamless digital platforrm for Christoffel a pri
 # Desserts Screenshots
 ![WhatsApp Image 2025-10-21 at 13 52 04_2c6e26b6](https://github.com/user-attachments/assets/593e65d6-c07c-494d-b49c-30071963e6a1)
 # Chef's input Screenshots
-# Installation instructions
+# Installation instructions (Cell phone)
+
 
 
 
