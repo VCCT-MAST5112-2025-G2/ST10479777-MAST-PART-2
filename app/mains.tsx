@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
+import { useMenu } from '../context/MenuContext'; // ✅ Import menu context
 
 type Mains = {
   id: string;
@@ -12,52 +12,52 @@ type Mains = {
   image: string;
 };
 
-const startersData: Mains[] = [
+const mainsData: Mains[] = [
   {
     id: '1',
     name: 'Grilled Chicken',
-    description: 'Juicy grilled chicken with herbs.',
-    price: 70,
+    description: 'Juicy gilled chicken with herbs.',
+    price: 80,
     image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
   },
   {
     id: '2',
     name: 'Beef Steak',
-    description: 'Juicy grilled beef served with sides.',
-    price: 140,
+    description: 'Juicy griled beef served with sides.',
+    price: 190,
     image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
   },
   {
     id: '3',
-    name: 'Alfredo Pasta',
-    description: 'Creamy pasta with with herbs',
+    name: 'Alfredo pasta',
+    description: 'Creamy Pasta with mint sauce.',
     price: 50,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
-  {
-    id: '3',
+   {
+    id: '4',
     name: 'Lamb Chops',
-    description: 'Tender lamb chops with mint sauce.',
-    price: 50,
+    description: 'Tender lamb chops with rosemary.',
+    price: 175,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
-
 ];
 
 export default function MainsScreen(): React.ReactElement {
   const router = useRouter();
-  const { addToOrder } = useMenu(); // ✅ Use addToOrder from context
+  const { addItem } = useMenu(); // ✅ Correct function name from context
 
   const handleAdd = (mains: Mains) => {
-    addToOrder({
+    // Add the item to the global context
+    addItem({
       id: mains.id,
       name: mains.name,
       description: mains.description,
       price: mains.price,
-      category: 'main', // 👈 Important for order grouping
+      category: 'main',
     });
 
-    Alert.alert('✅ Added to Order', `${mains.name} has been added.`);
+    Alert.alert('✅ Added to Order', `${mains.name} has been added to your order.`);
   };
 
   return (
@@ -65,7 +65,7 @@ export default function MainsScreen(): React.ReactElement {
       <Text style={styles.title}>Mains</Text>
 
       <FlatList
-        data={startersData}
+        data={mainsData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.card}>
@@ -105,7 +105,6 @@ export default function MainsScreen(): React.ReactElement {
   );
 }
 
-// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

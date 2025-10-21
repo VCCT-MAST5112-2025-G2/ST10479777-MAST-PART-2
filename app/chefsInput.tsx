@@ -1,6 +1,6 @@
 // app/chefsinput.tsx
 import React, { useState } from 'react';
-import {  View,Text, FlatList,TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native'; 
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useMenu } from '../context/MenuContext';
 
@@ -10,22 +10,27 @@ export default function ChefsInputScreen(): React.ReactElement {
   const router = useRouter();
   const { menu, addItem, removeItem, updateItem } = useMenu();
 
-  const [editId, setEditId] = useState<string | null>(null);
-  const [editName, setEditName] = useState<string>('');
-  const [editPrice, setEditPrice] = useState<string>('');
-
-  const [newName, setNewName] = useState<string>('');
-  const [newPrice, setNewPrice] = useState<string>('');
+  // 🆕 States for adding new items
+  const [newName, setNewName] = useState('');
+  const [newDescription, setNewDescription] = useState('');
+  const [newPrice, setNewPrice] = useState('');
   const [newCategory, setNewCategory] = useState<Category>('starter');
+
+  // ✍ States for editing existing items
+  const [editId, setEditId] = useState<string | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editPrice, setEditPrice] = useState('');
 
   const handleRemove = (id: string) => {
     removeItem(id);
     Alert.alert('🗑 Removed', 'The item has been removed from the menu.');
   };
 
-  const handleStartEdit = (id: string, name: string, price: number) => {
+  const handleStartEdit = (id: string, name: string, description: string, price: number) => {
     setEditId(id);
     setEditName(name);
+    setEditDescription(description);
     setEditPrice(price.toString());
   };
 
@@ -34,16 +39,17 @@ export default function ChefsInputScreen(): React.ReactElement {
       updateItem({
         id: editId,
         name: editName,
-        description: '',
+        description: editDescription,
         price: Number(editPrice),
-        category: menu.find(item => item.id === editId)?.category || 'starter',
+        category: menu.find((item) => item.id === editId)?.category || 'starter',
       });
       setEditId(null);
       setEditName('');
+      setEditDescription('');
       setEditPrice('');
       Alert.alert('✅ Updated', 'The menu item has been updated.');
     } else {
-      Alert.alert('⚠ Error', 'Please fill in all fields before saving.');
+      Alert.alert('⚠ Error', 'Please fill in name and price before saving.');
     }
   };
 
@@ -52,11 +58,12 @@ export default function ChefsInputScreen(): React.ReactElement {
       addItem({
         id: Date.now().toString(),
         name: newName,
-        description: '',
+        description: newDescription,
         price: Number(newPrice),
         category: newCategory,
       });
       setNewName('');
+      setNewDescription('');
       setNewPrice('');
       setNewCategory('starter');
       Alert.alert('✅ Added', 'New item has been added to the menu.');
@@ -79,13 +86,19 @@ export default function ChefsInputScreen(): React.ReactElement {
         />
         <TextInput
           style={styles.input}
+          placeholder="Description"
+          value={newDescription}
+          onChangeText={setNewDescription}
+        />
+        <TextInput
+          style={styles.input}
           placeholder="Price (R)"
           keyboardType="numeric"
           value={newPrice}
           onChangeText={setNewPrice}
         />
 
-        {/* Simple category selection */}
+        {/* Category Selection */}
         <View style={styles.categoryRow}>
           {(['starter', 'main', 'dessert'] as Category[]).map((cat) => (
             <TouchableOpacity
@@ -130,6 +143,12 @@ export default function ChefsInputScreen(): React.ReactElement {
                 />
                 <TextInput
                   style={styles.input}
+                  value={editDescription}
+                  onChangeText={setEditDescription}
+                  placeholder="Edit description"
+                />
+                <TextInput
+                  style={styles.input}
                   value={editPrice}
                   onChangeText={setEditPrice}
                   keyboardType="numeric"
@@ -144,8 +163,15 @@ export default function ChefsInputScreen(): React.ReactElement {
                 <Text style={styles.itemText}>
                   {item.name} - R {item.price} ({item.category})
                 </Text>
+                {item.description ? (
+                  <Text style={styles.descriptionText}>{item.description}</Text>
+                ) : null}
                 <View style={styles.actions}>
-                  <TouchableOpacity onPress={() => handleStartEdit(item.id, item.name, item.price)}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      handleStartEdit(item.id, item.name, item.description ?? '', item.price)
+                    }
+                  >
                     <Text style={styles.editText}>Edit</Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => handleRemove(item.id)}>
@@ -170,7 +196,7 @@ export default function ChefsInputScreen(): React.ReactElement {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff7e6' },
   title: { fontSize: 24, fontWeight: '700', textAlign: 'center', marginBottom: 20, color: '#5a3825' },
-  
+
   addSection: { marginBottom: 20 },
   input: {
     backgroundColor: '#fff',
@@ -195,6 +221,7 @@ const styles = StyleSheet.create({
 
   card: { backgroundColor: '#fff', padding: 12, marginBottom: 10, borderRadius: 8 },
   itemText: { fontSize: 16, color: '#333', marginBottom: 5 },
+  descriptionText: { fontSize: 14, color: '#666', marginBottom: 5 },
   actions: { flexDirection: 'row', justifyContent: 'space-between' },
   editText: { color: '#ff8c00', fontWeight: '600' },
   removeText: { color: 'red', fontWeight: '600' },

@@ -1,10 +1,10 @@
-// app/mains.tsx
+// app/starters.tsx
 import React from 'react';
-import { View,Text, StyleSheet, TouchableOpacity, FlatList, Image,Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
+import { useMenu } from '../context/MenuContext'; // ✅ Import menu context
 
-type desserts = {
+type Desserts = {
   id: string;
   name: string;
   description: string;
@@ -12,32 +12,32 @@ type desserts = {
   image: string;
 };
 
-const dessertsData: desserts[] = [
+const dessertsData: Desserts[] = [
   {
     id: '1',
-    name: 'Chocolate Brownie',
+    name: 'Chocolate brownie',
     description: 'Rich chocolate brownie with ice cream.',
-    price: 65,
+    price: 90,
     image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
   },
   {
     id: '2',
     name: 'Cheesecake',
     description: 'Classic cheesecake with a berry topping.',
-    price: 70,
+    price: 110,
     image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
   },
   {
     id: '3',
-    name: 'Ice Cream Sundae',
-    description: 'Vanilla ice cream with chocolate sauce.',
-    price: 55,
+    name: 'Ice cream Sundae',
+    description: 'Creamy ice cream with chocolate syrup.',
+    price: 50,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
-  {
+   {
     id: '4',
-    name: 'Malva Pudding',
-    description: 'Traditional South African dessert with custard.',
+    name: ' Malva Pudding',
+    description: 'Trsditionsl South African dessert with custard.',
     price: 130,
     image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
   },
@@ -45,19 +45,19 @@ const dessertsData: desserts[] = [
 
 export default function DessertsScreen(): React.ReactElement {
   const router = useRouter();
-  const { addToOrder} = useMenu(); // ✅ Access addItem from context
+  const { addItem } = useMenu(); // ✅ Correct function name from context
 
-  const handleAdd = (desserts: desserts) => {
-    // Add to global menu order
-    addToOrder({
+  const handleAdd = (desserts: Desserts) => {
+    // Add the item to the global context
+    addItem({
       id: desserts.id,
       name: desserts.name,
       description: desserts.description,
       price: desserts.price,
-      category: 'dessert', // 👈 Important for filtering later
+      category: 'dessert',
     });
 
-    Alert.alert('✅ Added to Order', `${desserts.name} has been added.`);
+    Alert.alert('✅ Added to Order', `${desserts.name} has been added to your order.`);
   };
 
   return (
@@ -96,7 +96,7 @@ export default function DessertsScreen(): React.ReactElement {
 
         <TouchableOpacity
           style={styles.navButton}
-          onPress={() => router.push('/filter')}
+          onPress={() => router.push('/desserts')}
         >
           <Text style={styles.navText}>Next ➡</Text>
         </TouchableOpacity>
@@ -105,7 +105,6 @@ export default function DessertsScreen(): React.ReactElement {
   );
 }
 
-// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

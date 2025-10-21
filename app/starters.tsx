@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useMenu } from '../context/MenuContext';  // ✅ Import your menu context
+import { useMenu } from '../context/MenuContext'; // ✅ Import menu context
 
 type Starter = {
   id: string;
@@ -18,7 +18,7 @@ const startersData: Starter[] = [
     name: 'Garlic Bread',
     description: 'Toasted bread with garlic butter.',
     price: 40,
-    image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
+    image: 'https://bing.com/th?id=OSK.b81affa138fb1b310a64aefb673d92e2',
   },
   {
     id: '2',
@@ -38,18 +38,19 @@ const startersData: Starter[] = [
 
 export default function StartersScreen(): React.ReactElement {
   const router = useRouter();
-  const { addToOrder } = useMenu(); // ✅ Use addToOrder from context
+  const { addItem } = useMenu(); // ✅ Correct function name from context
 
   const handleAdd = (starter: Starter) => {
-    addToOrder({
+    // Add the item to the global context
+    addItem({
       id: starter.id,
       name: starter.name,
       description: starter.description,
       price: starter.price,
-      category: 'starter', // 👈 Important for order grouping
+      category: 'starter',
     });
 
-    Alert.alert('✅ Added to Order', `${starter.name} has been added.`);
+    Alert.alert('✅ Added to Order', `${starter.name} has been added to your order.`);
   };
 
   return (
@@ -97,7 +98,6 @@ export default function StartersScreen(): React.ReactElement {
   );
 }
 
-// 🎨 Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

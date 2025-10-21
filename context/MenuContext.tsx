@@ -1,24 +1,20 @@
-// context/MenuContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+// 📝 Define menu item structure
 export type MenuItem = {
   id: string;
   name: string;
-  description?: string;
+  description?: string; // optional description
   price: number;
   category: 'starter' | 'main' | 'dessert';
 };
 
 type MenuContextType = {
   menu: MenuItem[];
-  order: MenuItem[];
   addItem: (item: MenuItem) => void;
   removeItem: (id: string) => void;
   updateItem: (updated: MenuItem) => void;
   clearMenu: () => void;
-  addToOrder: (item: MenuItem) => void;
-  removeFromOrder: (id: string) => void;
-  clearOrder: () => void;
 };
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
@@ -29,50 +25,35 @@ interface MenuProviderProps {
 
 export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [menu, setMenu] = useState<MenuItem[]>([]);
-  const [order, setOrder] = useState<MenuItem[]>([]);
 
-  // MENU HANDLERS
+  // ➕ Add new menu item
   const addItem = (item: MenuItem) => {
     setMenu((prev) => [...prev, item]);
   };
 
+  // 🗑 Remove menu item
   const removeItem = (id: string) => {
     setMenu((prev) => prev.filter((i) => i.id !== id));
   };
 
+  // ✍ Update existing item
   const updateItem = (updated: MenuItem) => {
     setMenu((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
   };
 
+  // 🧹 Clear menu completely
   const clearMenu = () => {
     setMenu([]);
-  };
-
-  // ORDER HANDLERS
-  const addToOrder = (item: MenuItem) => {
-    setOrder((prev) => [...prev, item]);
-  };
-
-  const removeFromOrder = (id: string) => {
-    setOrder((prev) => prev.filter((i) => i.id !== id));
-  };
-
-  const clearOrder = () => {
-    setOrder([]);
   };
 
   return (
     <MenuContext.Provider
       value={{
         menu,
-        order,
         addItem,
         removeItem,
         updateItem,
         clearMenu,
-        addToOrder,
-        removeFromOrder,
-        clearOrder,
       }}
     >
       {children}
@@ -80,6 +61,7 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   );
 };
 
+// ✅ Safe hook to use the context
 export const useMenu = (): MenuContextType => {
   const ctx = useContext(MenuContext);
   if (!ctx) {
