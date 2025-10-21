@@ -32,6 +32,31 @@ The application is to provide a seamless digital platforrm for Christoffel a pri
 ![WhatsApp Image 2025-10-21 at 20 28 49_ffd6e0da](https://github.com/user-attachments/assets/df302a37-a804-4b44-b1c7-6196690a8ff8)
 
 # Installation instructions (Cell phone)
+1. Download Expo go app on your cell phone
+2. Open Visual Studio Code
+3. Right click on **Package.json**
+4. click intergrated terminal
+5. type: npx expo start
+6. scan QR code and open expo go application on your cell phone
+
+# Installation instruction (Androiid Studio)
+1. open Android studio
+2. run emulator
+3. Open visual studio code
+4. right click on **Package.json**
+5. click intergrated terminal
+6. type: npx expo start
+7. Select the one running on android and type it out
+8. App will display on android studio
+
+# Change Log
+1. Changed my initial designs (Part 1) to match part 2's requirements and overall the POE's.
+   
+# Youtube link
+https://youtube.com/shorts/kRKGvZYNGnk?feature=share
+
+# Github link
+
 
 
 
