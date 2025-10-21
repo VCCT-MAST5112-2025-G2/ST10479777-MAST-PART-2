@@ -18,28 +18,28 @@ const dessertsData: Desserts[] = [
     name: 'Chocolate brownie',
     description: 'Rich chocolate brownie with ice cream.',
     price: 90,
-    image: 'https://via.placeholder.com/200x120.png?text=Garlic+Bread',
+    image: 'https://thecookbook.pk/wp-content/uploads/2019/07/sizzling-brownie-with-ice-cream-500x500-1-1275x1300.png',
   },
   {
     id: '2',
     name: 'Cheesecake',
     description: 'Classic cheesecake with a berry topping.',
     price: 110,
-    image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
+    image: 'https://www.mybakingaddiction.com/wp-content/uploads/2022/08/plated-blueberry-cheesecake-1024x1536.jpg',
   },
   {
     id: '3',
     name: 'Ice cream Sundae',
     description: 'Creamy ice cream with chocolate syrup.',
     price: 50,
-    image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
+    image: 'https://thumbs.dreamstime.com/b/delicious-vanilla-ice-cream-sundae-chocolate-sauce-wafer-biscuits-served-tall-glass-wooden-70034847.jpg',
   },
    {
     id: '4',
     name: ' Malva Pudding',
     description: 'Trsditionsl South African dessert with custard.',
     price: 130,
-    image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
+    image: 'https://tastywithlara.com/wp-content/uploads/2025/02/Malva-Pudding-with-Custard-Sauce--500x500.png',
   },
 ];
 

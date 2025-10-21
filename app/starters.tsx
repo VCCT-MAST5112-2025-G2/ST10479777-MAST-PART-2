@@ -25,14 +25,14 @@ const startersData: Starter[] = [
     name: 'Soup of the Day',
     description: 'Served with a bread roll.',
     price: 55,
-    image: 'https://via.placeholder.com/200x120.png?text=Soup+of+the+Day',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.ckV7K3VqK4-1MXoOsuyXMwHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
   },
   {
     id: '3',
     name: 'Spring Rolls',
     description: 'Crispy rolls with a sweet chili dip.',
     price: 50,
-    image: 'https://via.placeholder.com/200x120.png?text=Spring+Rolls',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.Zq6YgcR8YkLVTVZBgDlSygHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
   },
 ];
 
