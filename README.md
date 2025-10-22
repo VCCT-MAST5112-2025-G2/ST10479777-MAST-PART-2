@@ -60,7 +60,7 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 
 # References
 1. EdRoh, 2023. Typescript Application for Beginners. [video] YouTube. Available at: https://www.youtube.com/watch?v=I2NNxr3WPDo [Accessed 2 Oct. 2025].
-2. - Dave Gray, 2023. React Typescript Project Tutorial Shopping Cart [video] YouTube. Available at: https://www.youtube.com/watch?v=6Qqb2GBGgGc [Accessed 15 Oct. 2025].
+2. Dave Gray, 2023. React Typescript Project Tutorial Shopping Cart [video] YouTube. Available at: https://www.youtube.com/watch?v=6Qqb2GBGgGc [Accessed 15 Oct. 2025].
 
 
 
