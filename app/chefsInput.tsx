@@ -122,7 +122,7 @@ export default function ChefsInputScreen(): React.ReactElement {
         </View>
 
         <TouchableOpacity style={styles.addButton} onPress={handleAddNew}>
-          <Text style={styles.addButtonText}>Add Item</Text>
+          <Text style={styles.addButtonText}>🧺Add Item</Text>
         </TouchableOpacity>
       </View>
 

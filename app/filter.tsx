@@ -15,17 +15,17 @@ export default function Filter() {
 
       {/* BUTTONS */}
       <Pressable style={styles.button} onPress={() => router.push("/starters")}>
-        <Text style={styles.buttonText}>Starters</Text>
+        <Text style={styles.buttonText}>Starters🥐</Text>
       </Pressable>
 
       <Pressable style={styles.button} onPress={() => router.push("/mains")}>
-        <Text style={styles.buttonText}>Mains</Text>
+        <Text style={styles.buttonText}>Mains🍝</Text>
       </Pressable>
 
       <Pressable
         style={styles.button}
         onPress={() => router.push("/desserts")}>
-        <Text style={styles.buttonText}>Desserts</Text>
+        <Text style={styles.buttonText}>Desserts 🎂</Text>
       </Pressable>
     </View>
   );
