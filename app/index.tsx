@@ -11,11 +11,20 @@ export default function HomePage(): React.ReactElement {
   const totalItems = menu.length;
   const totalPrice = menu.reduce((sum, item) => sum + item.price, 0);
 
+  // average calculations per category
+  const calcAverage = (category: 'starter' | 'main' | 'dessert') => {
+    const filtered = menu.filter(item => item.category === category);
+    if (filtered.length === 0) return 0;
+    return filtered.reduce((sum, item) => sum + item.price, 0) / filtered.length;
+  };
+
+  const avgStarter = calcAverage('starter');
+  const avgMain = calcAverage('main');
+  const avgDessert = calcAverage('dessert');
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>👨‍🍳 Christoffel’s kitchen where flavour meets finesse.</Text>
-
-      
 
       {/* Total Summary */}
       <View style={styles.summary}>
@@ -23,7 +32,14 @@ export default function HomePage(): React.ReactElement {
         <Text style={styles.summaryText}>Total Price: R {totalPrice}</Text>
       </View>
 
-      {/*  Display Menu Items */}
+      {/* 🔥 Averages per course */}
+      <View style={styles.averageBox}>
+        <Text style={styles.averageText}>Avg Starter Price: R {avgStarter.toFixed(2)}</Text>
+        <Text style={styles.averageText}>Avg Main Price: R {avgMain.toFixed(2)}</Text>
+        <Text style={styles.averageText}>Avg Dessert Price: R {avgDessert.toFixed(2)}</Text>
+      </View>
+
+      {/* Display Menu Items */}
       <FlatList
         data={menu}
         keyExtractor={(item) => item.id}
@@ -42,16 +58,11 @@ export default function HomePage(): React.ReactElement {
         contentContainerStyle={styles.listContent}
       />
 
-      {/*  Navigation Buttons */}
+      {/* Navigation Buttons */}
       <View style={styles.navContainer}>
-        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/starters')}>
-          <Text style={styles.navText}>Starters</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/mains')}>
-          <Text style={styles.navText}>Mains</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/desserts')}>
-          <Text style={styles.navText}>Desserts</Text>
+       
+        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/filter')}>
+          <Text style={styles.navText}>Filter</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => router.push('/chefsinput')}>
           <Text style={styles.navText}>Chef’s Input 👨🏽‍🍳</Text>
@@ -83,14 +94,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  averageBox: {
+    backgroundColor: '#ffe4b5',
+    padding: 12,
+    borderRadius: 10,
+    marginBottom: 15,
+  },
+  averageText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#5a3825',
+    marginBottom: 2,
+  },
   summaryText: {
     fontSize: 16,
     fontWeight: '600',
     color: '#5a3825',
   },
-  listContent: {
-    paddingBottom: 20,
-  },
+  listContent: { paddingBottom: 20 },
   card: {
     backgroundColor: '#fff',
     padding: 15,
@@ -100,20 +121,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  itemName: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
-  },
-  itemCategory: {
-    fontSize: 14,
-    color: '#777',
-  },
-  itemPrice: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#ff8c00',
-  },
+  itemName: { fontSize: 16, fontWeight: '600', color: '#333' },
+  itemCategory: { fontSize: 14, color: '#777' },
+  itemPrice: { fontSize: 16, fontWeight: '700', color: '#ff8c00' },
   navContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -128,15 +138,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     flexBasis: '48%',
   },
-  navText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: '600',
-  },
-  emptyText: {
-    textAlign: 'center',
-    color: '#999',
-    marginTop: 30,
-    fontSize: 14,
-  },
+  navText: { color: '#fff', textAlign: 'center', fontWeight: '600' },
+  emptyText: { textAlign: 'center', color: '#999', marginTop: 30, fontSize: 14 },
 });
