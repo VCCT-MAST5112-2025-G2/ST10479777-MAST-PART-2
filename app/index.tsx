@@ -34,9 +34,9 @@ export default function HomePage(): React.ReactElement {
 
       {/*  Averages per course */}
       <View style={styles.averageBox}>
-        <Text style={styles.averageText}>Avgerage Starter Price: R {avgStarter.toFixed(2)}</Text>
-        <Text style={styles.averageText}>Avgerage Main Price: R {avgMain.toFixed(2)}</Text>
-        <Text style={styles.averageText}>Avgerage Dessert Price: R {avgDessert.toFixed(2)}</Text>
+        <Text style={styles.averageText}>Average Starter Price: R {avgStarter.toFixed(2)}</Text>
+        <Text style={styles.averageText}>Average Main Price: R {avgMain.toFixed(2)}</Text>
+        <Text style={styles.averageText}>Average Dessert Price: R {avgDessert.toFixed(2)}</Text>
       </View>
 
       {/* Display Menu Items */}
