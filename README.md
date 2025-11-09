@@ -62,6 +62,17 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 1. EdRoh, 2023. Typescript Application for Beginners. [video] YouTube. Available at: https://www.youtube.com/watch?v=I2NNxr3WPDo [Accessed 2 Oct. 2025].
 2. Dave Gray, 2023. React Typescript Project Tutorial Shopping Cart [video] YouTube. Available at: https://www.youtube.com/watch?v=6Qqb2GBGgGc [Accessed 15 Oct. 2025].
 
+# Part 3
+# Corrections from part 2
+-Added the average price along with the totals on the homepage
+
+# Change Log
+- created a separate filter page to filter courses
+- calculated the average price and put it on the homepage
+- had a separate page for the chef's input and allowed the chef to edit and remove menu items
+- removed the courses buttons on the homepage and made it read-only view
+
+
 
 
 
