@@ -11,7 +11,7 @@ type Starter = {
   price: number;
   image: string;
 };
-
+// Sample starters data
 const startersData: Starter[] = [
   {
     id: '1',

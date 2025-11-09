@@ -24,8 +24,7 @@ export default function HomePage(): React.ReactElement {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>👨‍🍳 
-        Christoffel’s kitchen where flavour meets finesse.</Text>
+      <Text style={styles.title}>👨‍🍳 Christoffel’s kitchen where flavour meets finesse.</Text>
 
       {/* Total Summary */}
       <View style={styles.summary}>
@@ -33,7 +32,7 @@ export default function HomePage(): React.ReactElement {
         <Text style={styles.summaryText}>Total Price: R {totalPrice}</Text>
       </View>
 
-      {/* 🔥 Averages per course */}
+      {/*  Averages per course */}
       <View style={styles.averageBox}>
         <Text style={styles.averageText}>Avgerage Starter Price: R {avgStarter.toFixed(2)}</Text>
         <Text style={styles.averageText}>Avgerage Main Price: R {avgMain.toFixed(2)}</Text>
