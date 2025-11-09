@@ -63,7 +63,7 @@ export default function MainsScreen(): React.ReactElement {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Mains</Text>
-
+{/*Display list of mains*/}
       <FlatList
         data={mainsData}
         keyExtractor={(item) => item.id}
@@ -104,7 +104,7 @@ export default function MainsScreen(): React.ReactElement {
     </View>
   );
 }
-
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

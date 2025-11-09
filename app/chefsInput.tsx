@@ -21,7 +21,7 @@ export default function ChefsInputScreen(): React.ReactElement {
   const [editName, setEditName] = useState('');
   const [editDescription, setEditDescription] = useState('');
   const [editPrice, setEditPrice] = useState('');
-
+// Handle remove item
   const handleRemove = (id: string) => {
     removeItem(id);
     Alert.alert('🗑 Removed', 'The item has been removed from the menu.');
