@@ -76,7 +76,7 @@ export default function ChefsInputScreen(): React.ReactElement {
     <View style={styles.container}>
       <Text style={styles.title}>Chef’s Input 👨🏽‍🍳</Text>
 
-      {/* ➕ Add New Menu Item */}
+      {/*  Add New Menu Item */}
       <View style={styles.addSection}>
         <TextInput
           style={styles.input}
@@ -126,7 +126,7 @@ export default function ChefsInputScreen(): React.ReactElement {
         </TouchableOpacity>
       </View>
 
-      {/* 📜 Menu List */}
+      {/*  Menu List */}
       <FlatList
         data={menu}
         keyExtractor={(item) => item.id}
@@ -192,7 +192,7 @@ export default function ChefsInputScreen(): React.ReactElement {
   );
 }
 
-// 🎨 Styling
+// Styling
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff7e6' },
   title: { fontSize: 24, fontWeight: '700', textAlign: 'center', marginBottom: 20, color: '#5a3825' },
