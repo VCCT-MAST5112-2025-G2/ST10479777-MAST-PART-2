@@ -71,6 +71,15 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 - calculated the average price and put it on the homepage
 - had a separate page for the chef's input and allowed the chef to edit and remove menu items
 - removed the courses buttons on the homepage and made it read-only view
+
+# New Features
+# Filter Page
+- 3 buttons for the 3 courses
+# Homepage
+- Filtter button
+- Chef's Input button
+- Average Text box separated into 3 courses
+
 # References 
 - Gray, 2023. React Typescript Project Tutorial shopping cart [video] YouTube. available at: https://www.youtube.com/watch?v=HQFeTj0dGBo [accessed 06 November 2025]
 - Dipesh Malvia. Learn React, Typescript and Material UI with one project [video] Youtube. available at: https://www.youtube.com/watch?v=uGnh1NnlEbQ [accessed 08 November 2025]
