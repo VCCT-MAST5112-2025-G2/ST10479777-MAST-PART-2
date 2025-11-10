@@ -82,10 +82,16 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 # Screenshots
 # Homepage
 <img width="1080" height="2400" alt="homepage" src="https://github.com/user-attachments/assets/3353bd9f-5cf6-4833-8f7a-a3c08defaf18" />
+
+
 ## Filter Page
 <img width="1080" height="2400" alt="filter" src="https://github.com/user-attachments/assets/26e09584-26c8-488c-91a8-10437491078b" />
+
+
 # Chef's input page
 <img width="1080" height="2400" alt="chefsInput" src="https://github.com/user-attachments/assets/b99e64fd-69be-47b0-a660-d757a2a71386" />
+
+
 # Added Items
 <img width="1080" height="2400" alt="added item" src="https://github.com/user-attachments/assets/e31807c6-fc8c-4bb9-8bda-2a07f2b701f3" />
 <img width="1080" height="2400" alt="added item 2 0" src="https://github.com/user-attachments/assets/023c0331-7c83-4165-924b-6d61a4ea1696" />
