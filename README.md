@@ -76,9 +76,16 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 # Filter Page
 - 3 buttons for the 3 courses
 # Homepage
-- Filtter button
+- Filter button
 - Chef's Input button
 - Average Text box separated into 3 courses
+# Screenshots
+# Homepage
+<img width="1080" height="2400" alt="homepage" src="https://github.com/user-attachments/assets/3353bd9f-5cf6-4833-8f7a-a3c08defaf18" />
+# Filter Page
+
+
+
 
 # References 
 - Gray, 2023. React Typescript Project Tutorial shopping cart [video] YouTube. available at: https://www.youtube.com/watch?v=HQFeTj0dGBo [accessed 06 November 2025]
