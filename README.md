@@ -96,6 +96,11 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 <img width="1080" height="2400" alt="added item" src="https://github.com/user-attachments/assets/e31807c6-fc8c-4bb9-8bda-2a07f2b701f3" />
 <img width="1080" height="2400" alt="added item 2 0" src="https://github.com/user-attachments/assets/023c0331-7c83-4165-924b-6d61a4ea1696" />
 
+# YouTube Link
+
+# GitHub Link
+https://github.com/VCCT-MAST5112-2025-G2/ST10479777-MAST-PART-2/tree/master
+
 # References 
 - Gray, 2023. React Typescript Project Tutorial shopping cart [video] YouTube. available at: https://www.youtube.com/watch?v=HQFeTj0dGBo [accessed 06 November 2025]
 - Dipesh Malvia. Learn React, Typescript and Material UI with one project [video] Youtube. available at: https://www.youtube.com/watch?v=uGnh1NnlEbQ [accessed 08 November 2025]
