@@ -97,6 +97,7 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 <img width="1080" height="2400" alt="added item 2 0" src="https://github.com/user-attachments/assets/023c0331-7c83-4165-924b-6d61a4ea1696" />
 
 # YouTube Link
+https://youtube.com/shorts/PqqIGWKHuTk
 
 # GitHub Link
 https://github.com/VCCT-MAST5112-2025-G2/ST10479777-MAST-PART-2/tree/master
