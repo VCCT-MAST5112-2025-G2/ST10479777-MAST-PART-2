@@ -1,4 +1,3 @@
-// app/chefsinput.tsx
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
