@@ -76,9 +76,19 @@ https://github.com/ST10479777/ST10479777-MAST-PART-2
 # Filter Page
 - 3 buttons for the 3 courses
 # Homepage
-- Filter button
-- Chef's Input button
-- Average Text box separated into 3 courses
+1. Filter button
+2. Chef's Input button
+3. Average Text box separated into 3 courses
+# Application Instructions
+1. User clicks filter button on the homepage
+2. Picks a course and clicks one of the buttons listed on filter page
+3. Browse through the meals and click add button to select a meal
+4. click next button to go to the next page
+5. follow the same procedure for all 3 courses
+6. Once done, return to homepage and chef clicks the chef's input button
+7. selected meals are displayed on the page
+8. chef can edit and remove meals. the chef can also add a new meal and categorise it accordingly
+9. Every meal is then displayed on the homepage along with total and average prices 
 # Screenshots
 # Homepage
 <img width="1080" height="2400" alt="homepage" src="https://github.com/user-attachments/assets/3353bd9f-5cf6-4833-8f7a-a3c08defaf18" />
