@@ -34,7 +34,7 @@ const startersData: Starter[] = [
     image: 'https://tse2.mm.bing.net/th/id/OIP.Zq6YgcR8YkLVTVZBgDlSygHaFj?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
   },
 ];
-
+// 
 export default function StartersScreen(): React.ReactElement {
   const router = useRouter();
   const { addItem } = useMenu(); 

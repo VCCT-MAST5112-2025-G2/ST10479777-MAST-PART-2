@@ -4,11 +4,11 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 export type MenuItem = {
   id: string;
   name: string;
-  description?: string; // optional description
+  description?: string; 
   price: number;
   category: 'starter' | 'main' | 'dessert';
 };
-
+// Define context type
 type MenuContextType = {
   menu: MenuItem[];
   addItem: (item: MenuItem) => void;
@@ -45,7 +45,7 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const clearMenu = () => {
     setMenu([]);
   };
-
+  
   return (
     <MenuContext.Provider
       value={{

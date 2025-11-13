@@ -30,7 +30,7 @@ export default function Filter() {
     </View>
   );
 }
-
+// styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
