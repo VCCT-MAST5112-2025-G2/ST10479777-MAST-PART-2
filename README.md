@@ -115,6 +115,8 @@ https://github.com/VCCT-MAST5112-2025-G2/ST10479777-MAST-PART-2/tree/master
 # References 
 - Gray, 2023. React Typescript Project Tutorial shopping cart [video] YouTube. available at: https://www.youtube.com/watch?v=HQFeTj0dGBo [accessed 06 November 2025]
 - Dipesh Malvia. Learn React, Typescript and Material UI with one project [video] Youtube. available at: https://www.youtube.com/watch?v=uGnh1NnlEbQ [accessed 08 November 2025]
+
+# Use of AI
 - Copilot quick fix on visual studio
 
 
